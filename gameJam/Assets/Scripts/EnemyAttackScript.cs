@@ -9,7 +9,7 @@ public class EnemyAttackScript : MonoBehaviour
     public bool walk;
     public Animator enemyAnim;
     public float enemySpeed;
-
+    public GameObject item;
     public float enemyAttackTime;
 
     public int enemyHealth;
@@ -89,7 +89,14 @@ public class EnemyAttackScript : MonoBehaviour
         enemyHealth -= 25;
         if (enemyHealth <= 0)
         {
-            enemyAnim.SetBool("Death", true);
+            enemyAnim.SetBool("death", true);
+            Invoke("Dead", 2f);
         }
+    }
+    void Dead()
+    {
+        Instantiate(item, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+        
     }
 }

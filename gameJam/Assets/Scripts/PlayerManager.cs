@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject playerBlood;
     public int nextLevel;
     public int healt = 100;
-
+    public int diamondCounter = 0;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Ayasofya"))
@@ -26,6 +26,12 @@ public class PlayerManager : MonoBehaviour
                 sceneManager.GetComponent<LoadSceneManager>().NextLevel(nextLevel);
             }
         }
+        if (collision.CompareTag("item"))
+        {
+            Destroy(collision.gameObject);
+            diamondCounter += 1;
+        }
+        
     }
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -41,6 +47,13 @@ public class PlayerManager : MonoBehaviour
         {
             playerBlood.SetActive(true);
         }
+        if (collision.gameObject.CompareTag("oldman"))
+        {
+            if (diamondCounter == 3)
+            {
+                SceneManager.LoadScene(3);
+            }
+        }
     }
 
 
@@ -55,7 +68,7 @@ public class PlayerManager : MonoBehaviour
     {
         healt -= 15;
 
-        if(healt >= 0)
+        if(healt <= 0)
         {
             SceneManager.LoadScene(0); //menü ye atar
         }

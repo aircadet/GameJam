@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D playerRB;
     Animator PlayerAnim;
+    GameObject tempGameObject;
     public GameObject player;
     public float jumpForce;
     public float speed, acceleration;
@@ -15,9 +16,8 @@ public class PlayerMovement : MonoBehaviour
     float coolDown = 1f;
     float nextJumpTime = 0;
     float nextAttackTime = 0;
-
+    bool saldiri = true;
     public AudioSource audioSource;
-
     public AudioClip almak, click, kapiGicirti, kilic1, kilic2, kilic3, kilic4, kilic5, adim, sword, sword1, sword2;
     public AudioClip[] kiliclar;
     public AudioClip[] swords;
@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
             playerRB.AddRelativeForce(Vector2.up * jumpForce);
             nextJumpTime = Time.timeSinceLevelLoad + coolDown;
         }
-        if (Input.GetKey(KeyCode.F) && nextAttackTime <= Time.timeSinceLevelLoad)
+        if (Input.GetKey(KeyCode.F) && nextAttackTime <= Time.timeSinceLevelLoad && saldiri)
         {
             if (swordUpgrade)
             {
@@ -82,6 +82,26 @@ public class PlayerMovement : MonoBehaviour
             {
                 PlayerAnim.SetTrigger("KnifeAttack");
                 nextAttackTime = Time.timeSinceLevelLoad + coolDown;
+                PlaySound2(sword);
+            }
+        }
+        if (Input.GetKey(KeyCode.F) && nextAttackTime <= Time.timeSinceLevelLoad && !saldiri)
+        {
+
+            if (swordUpgrade)
+            {
+              
+                PlayerAnim.SetTrigger("SwordAttack");
+                nextAttackTime = Time.timeSinceLevelLoad + coolDown;
+                //SoundManager.PlaySound("sword");
+                tempGameObject.GetComponent<EnemyAttackScript>().enemyHealthManager();
+                PlaySound2(kilic3);
+            }
+            else if (knifeUpgrade)
+            {
+                PlayerAnim.SetTrigger("KnifeAttack");
+                nextAttackTime = Time.timeSinceLevelLoad + coolDown;
+                tempGameObject.GetComponent<EnemyAttackScript>().enemyHealthManager();
                 PlaySound2(sword);
             }
         }
@@ -105,31 +125,24 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.CompareTag("Enemy") )
+
+        if (collision.CompareTag("Enemy"))
         {
-            if (Input.GetKey(KeyCode.F) && nextAttackTime <= Time.timeSinceLevelLoad)
-            {
-                if (swordUpgrade)
-                {
-                    PlayerAnim.SetTrigger("SwordAttack");
-                    nextAttackTime = Time.timeSinceLevelLoad + coolDown;
-                    //SoundManager.PlaySound("sword");
-                    //collision.GetComponent<EnemyAttackScript>.GetDamage();
-                    PlaySound2(kilic3);
-                }
-                else if (knifeUpgrade)
-                {
-                    PlayerAnim.SetTrigger("KnifeAttack");
-                    nextAttackTime = Time.timeSinceLevelLoad + coolDown;
-                  //  collision.GetComponent<EnemyAttackScript>.GetDamage();
-                    PlaySound2(sword);
-                }
-            }
+            tempGameObject = collision.gameObject;
+            saldiri = false;
+            
 
         }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            saldiri = false;
+        }
 
 
 
 
+    }
 }
