@@ -10,6 +10,8 @@ public class EnemyAttackScript : MonoBehaviour
     public Animator enemyAnim;
     public float enemySpeed;
 
+    public float enemyAttackTime;
+
     public int enemyHealth;
     void Start()
     {
@@ -28,7 +30,7 @@ public class EnemyAttackScript : MonoBehaviour
         {
             enemy.transform.localScale = new Vector3(-1, 1, 1);
 
-            if (Mathf.Abs(enemyPos.x - playerPos.x) > 3 &&  Mathf.Abs(enemyPos.x - playerPos.x) < 10)
+            if (Mathf.Abs(enemyPos.x - playerPos.x) > 3 &&  Mathf.Abs(enemyPos.x - playerPos.x) < 7)
             {             
                 enemy.transform.position = new Vector3(enemyPos.x + (enemySpeed * Time.deltaTime), enemyPos.y);
                 walk = true;
@@ -40,7 +42,7 @@ public class EnemyAttackScript : MonoBehaviour
         {
             enemy.transform.localScale = new Vector3(1, 1, 1);
 
-            if (Mathf.Abs(enemyPos.x - playerPos.x) > 3 && Mathf.Abs(enemyPos.x - playerPos.x) < 10)
+            if (Mathf.Abs(enemyPos.x - playerPos.x) > 3 && Mathf.Abs(enemyPos.x - playerPos.x) < 7)
             {               
                 enemy.transform.position = new Vector3(enemyPos.x - (enemySpeed * Time.deltaTime), enemyPos.y);
                 walk = true;               
@@ -50,16 +52,35 @@ public class EnemyAttackScript : MonoBehaviour
 
         if (Mathf.Abs(enemyPos.x - playerPos.x) < 3) 
         {
+            if (enemyAttackTime <= 0)
+            {
+                enemyAnim.SetBool("attack", true);
+                enemyAttackTime = 1;
+                GameObject.Find("Player").GetComponent<PlayerManager>().GetDamage();
 
-            //attack
-            enemyAnim.SetBool("attack", true);
+                
+            }
+            else if (enemyAttackTime >= 0)
+            {
+                enemyAnim.SetBool("attack", false);
+            }
         }
         else
         {
             enemyAnim.SetBool("attack", false);
         }
 
-        Debug.Log("Yürüme Durumu ---->" + walk);
+        if (enemyAttackTime > 0)
+        {
+            enemyAttackTime -= 0.3f * Time.deltaTime;
+            
+        }
+        else if (enemyAttackTime < 0)
+        {
+            enemyAttackTime = 0;
+        }
+
+        
 
     }
 

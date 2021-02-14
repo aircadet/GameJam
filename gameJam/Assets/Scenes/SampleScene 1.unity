@@ -3351,6 +3351,8 @@ MonoBehaviour:
   walk: 0
   enemyAnim: {fileID: 1066560606}
   enemySpeed: 2
+  enemyAttackTime: 0
+  enemyHealth: 100
 --- !u!4 &948218408
 Transform:
   m_ObjectHideFlags: 0
