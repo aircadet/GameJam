@@ -5,7 +5,7 @@ using UnityEngine;
 public class LastLevel : MonoBehaviour
 {
     public GameObject oldMan, player, effect ;
-    public float oldManHealt, TabutHealt;
+    public float oldManHealt = 100, TabutHealt = 100;
     float cooldown = 3f;
     Animator oldManAnim, effectAnim;
     float nextAttack=3f;
@@ -26,7 +26,7 @@ public class LastLevel : MonoBehaviour
     {
         oldManAnim.SetTrigger("attack");
         effectAnim.SetTrigger("attack");
-        TabutHealt -=50;
+        TabutHealt -=20;
         if (TabutHealt <= 0)
         {
             //kaybettik
@@ -35,7 +35,7 @@ public class LastLevel : MonoBehaviour
     }
     public void getDamage()
     {
-        oldManHealt -= 100;
+        oldManHealt -= 30;
         if( oldManHealt <= 0)
         {
             //kazandık

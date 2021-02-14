@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     Animator PlayerAnim;
     GameObject tempGameObject;
     public GameObject player;
+    public GameObject oldMan;
+    public GameObject tabut;
     public float jumpForce;
     public float speed, acceleration;
     public bool isGround = true;
@@ -24,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip[] swords;
 
     public Slider slider;
+    public Slider oldManSlider;
+    public Slider tabutSlider;
     public Camera camera;
 
     void Start()
@@ -34,12 +38,18 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Vector3 camPos = camera.WorldToScreenPoint(player.transform.position);
-        
+        Vector3 camPos1 = camera.WorldToScreenPoint(oldMan.transform.position);
+        Vector3 camPos2 = camera.WorldToScreenPoint(tabut.transform.position);
+
         float health = FindObjectOfType<PlayerManager>().healt;
 
         slider.value = health / 100;
+        oldManSlider.value = FindObjectOfType<LastLevel>().oldManHealt / 100;
+        tabutSlider.value = FindObjectOfType<LastLevel>().TabutHealt / 100;
 
         slider.transform.position = new Vector3(camPos.x, camPos.y + 250, camPos.z);
+        oldManSlider.transform.position = new Vector3(camPos1.x, camPos1.y + 250, camPos1.z);
+        tabutSlider.transform.position = new Vector3(camPos2.x, camPos2.y + 250, camPos2.z);
 
 
         float tempVelocity = Mathf.Abs(playerRB.velocity.x);

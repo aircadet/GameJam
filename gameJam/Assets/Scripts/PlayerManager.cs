@@ -12,13 +12,6 @@ public class PlayerManager : MonoBehaviour
     public int healt = 100;
     public int diamondCounter = 0;
 
-    public Slider slider;
-
-    private void Update()
-    {
-      
-        slider.value = healt / 100;
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
