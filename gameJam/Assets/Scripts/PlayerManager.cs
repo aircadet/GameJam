@@ -2,13 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class PlayerManager : MonoBehaviour
 {
+    public GameObject player;
     public GameObject ayasofyaText, sceneManager;
     public GameObject playerBlood;
     public int nextLevel;
     public int healt = 100;
     public int diamondCounter = 0;
+
+    public Slider slider;
+
+    private void Update()
+    {
+      
+        slider.value = healt / 100;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Ayasofya"))
@@ -19,7 +30,7 @@ public class PlayerManager : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-      if(collision.CompareTag("Ayasofya"))
+        if (collision.CompareTag("Ayasofya"))
         {
             if (Input.GetKey(KeyCode.E))
             {
@@ -31,7 +42,7 @@ public class PlayerManager : MonoBehaviour
             Destroy(collision.gameObject);
             diamondCounter += 1;
         }
-        
+
     }
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -68,7 +79,7 @@ public class PlayerManager : MonoBehaviour
     {
         healt -= 15;
 
-        if(healt <= 0)
+        if (healt <= 0)
         {
             SceneManager.LoadScene(0); //menü ye atar
         }

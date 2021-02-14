@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip[] kiliclar;
     public AudioClip[] swords;
 
+    public Slider slider;
+    public Camera camera;
+
     void Start()
     {
         PlayerAnim = gameObject.GetComponent<Animator>();
@@ -29,6 +33,15 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
+        Vector3 camPos = camera.WorldToScreenPoint(player.transform.position);
+        
+        float health = FindObjectOfType<PlayerManager>().healt;
+
+        slider.value = health / 100;
+
+        slider.transform.position = new Vector3(camPos.x, camPos.y + 250, camPos.z);
+
+
         float tempVelocity = Mathf.Abs(playerRB.velocity.x);
         PlayerAnim.SetFloat("velocity", tempVelocity);
         PlayerAnim.SetBool("JumpAnim", !isGround);
