@@ -11,8 +11,16 @@ public class StoryManager : MonoBehaviour
     public int storyCounter=0;
     public int currentPage= -1;
     bool isStoryOpen=false;
+    private void Update()
+    {
+        //if (Input.GetMouseButtonDown(0) && storyPanel.activeSelf)
+        //{
+        //    NextImage();
+        //}
+    }
     private void FixedUpdate()
     {
+       
         if(storyPanel.activeSelf && !isStoryOpen) // Story her aktif olduğunda 1 defa çalışacak
         {
             storyImageBox.sprite = storySprites[currentPage+1];
