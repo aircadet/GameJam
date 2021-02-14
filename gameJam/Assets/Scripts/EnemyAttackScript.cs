@@ -9,6 +9,8 @@ public class EnemyAttackScript : MonoBehaviour
     public bool walk;
     public Animator enemyAnim;
     public float enemySpeed;
+
+    public int enemyHealth;
     void Start()
     {
     }
@@ -26,16 +28,10 @@ public class EnemyAttackScript : MonoBehaviour
         {
             enemy.transform.localScale = new Vector3(-1, 1, 1);
 
-            if (Mathf.Abs(enemyPos.x - playerPos.x) > 3)
-            {
-               
+            if (Mathf.Abs(enemyPos.x - playerPos.x) > 3 &&  Mathf.Abs(enemyPos.x - playerPos.x) < 10)
+            {             
                 enemy.transform.position = new Vector3(enemyPos.x + (enemySpeed * Time.deltaTime), enemyPos.y);
-
-                
-
                 walk = true;
-
-
             }
 
             
@@ -44,18 +40,12 @@ public class EnemyAttackScript : MonoBehaviour
         {
             enemy.transform.localScale = new Vector3(1, 1, 1);
 
-            if (Mathf.Abs(enemyPos.x - playerPos.x) > 4)
-            {
-
-                
+            if (Mathf.Abs(enemyPos.x - playerPos.x) > 3 && Mathf.Abs(enemyPos.x - playerPos.x) < 10)
+            {               
                 enemy.transform.position = new Vector3(enemyPos.x - (enemySpeed * Time.deltaTime), enemyPos.y);
-                walk = true;
+                walk = true;               
 
-                
-
-            }
-           
-            
+            }           
         }
 
         if (Mathf.Abs(enemyPos.x - playerPos.x) < 3) 
@@ -71,7 +61,14 @@ public class EnemyAttackScript : MonoBehaviour
 
         Debug.Log("Yürüme Durumu ---->" + walk);
 
+    }
 
-
+    public void enemyHealthManager()
+    {
+        enemyHealth -= 25;
+        if (enemyHealth <= 0)
+        {
+            enemyAnim.SetBool("Death", true);
+        }
     }
 }
