@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     float coolDown= 1f;
     float nextJumpTime=0;
     float nextAttackTime = 0;
+
+   
     void Start()
     {
         PlayerAnim = gameObject.GetComponent<Animator>();
@@ -32,11 +34,15 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
             playerRB.velocity = new Vector2(Mathf.Lerp(playerRB.velocity.x, speed, acceleration), playerRB.velocity.y);
+
+            SoundManager.PlaySound("adim");
         }
         if (Input.GetKey(KeyCode.A))
         {
             transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
             playerRB.velocity = new Vector2(Mathf.Lerp(playerRB.velocity.x, -speed, acceleration), playerRB.velocity.y);
+
+            SoundManager.PlaySound("adim");
         }
 
         if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
@@ -54,10 +60,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 PlayerAnim.SetTrigger("SwordAttack");
                 nextAttackTime = Time.timeSinceLevelLoad + coolDown;
+
+                SoundManager.PlaySound("sword");
             }
             else if (knifeUpgrade)
             {
-                PlayerAnim.SetTrigger("KnifeAttack");
+                PlayerAnim.SetTrigger("kilic");
                 nextAttackTime = Time.timeSinceLevelLoad + coolDown;
             }
         }
