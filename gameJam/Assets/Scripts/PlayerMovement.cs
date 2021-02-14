@@ -16,7 +16,13 @@ public class PlayerMovement : MonoBehaviour
     float nextJumpTime=0;
     float nextAttackTime = 0;
 
-   
+    public AudioSource audioSource;
+
+    public AudioClip almak, click, kapiGicirti, kilic1, kilic2, kilic3, kilic4, kilic5, adim, sword, sword1, sword2;
+    public AudioClip[] kiliclar;
+    public AudioClip[] swords;
+
+
     void Start()
     {
         PlayerAnim = gameObject.GetComponent<Animator>();
@@ -27,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
         float tempVelocity = Mathf.Abs(playerRB.velocity.x);
         PlayerAnim.SetFloat("velocity", tempVelocity);
         PlayerAnim.SetBool("JumpAnim", !isGround);
+
+       
     }
     private void FixedUpdate()
     {
@@ -35,14 +43,17 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
             playerRB.velocity = new Vector2(Mathf.Lerp(playerRB.velocity.x, speed, acceleration), playerRB.velocity.y);
 
-            SoundManager.PlaySound("adim");
+            //SoundManager.PlaySound("adim");
+
+            PlaySound(adim);
         }
         if (Input.GetKey(KeyCode.A))
         {
             transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
             playerRB.velocity = new Vector2(Mathf.Lerp(playerRB.velocity.x, -speed, acceleration), playerRB.velocity.y);
 
-            SoundManager.PlaySound("adim");
+            //SoundManager.PlaySound("adim");
+            PlaySound(adim);
         }
 
         if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
@@ -61,14 +72,38 @@ public class PlayerMovement : MonoBehaviour
                 PlayerAnim.SetTrigger("SwordAttack");
                 nextAttackTime = Time.timeSinceLevelLoad + coolDown;
 
-                SoundManager.PlaySound("sword");
+                //SoundManager.PlaySound("sword");
+
+                PlaySound2(kilic3);
             }
             else if (knifeUpgrade)
             {
-                PlayerAnim.SetTrigger("kilic");
+                PlayerAnim.SetTrigger("KnifeAttack");
                 nextAttackTime = Time.timeSinceLevelLoad + coolDown;
+                PlaySound2(sword);
             }
         }
     }
-    
+
+    public void PlaySound(AudioClip clip)
+    {
+        
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(clip, 0.5f);
+        }
+
+    }
+
+    public void PlaySound2(AudioClip clip)
+    {
+
+        audioSource.PlayOneShot(clip, 0.5f);
+
+    }
+
+
+
+
+
 }
