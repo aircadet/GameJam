@@ -33,7 +33,10 @@ public class PlayerMovement : MonoBehaviour
         float tempVelocity = Mathf.Abs(playerRB.velocity.x);
         PlayerAnim.SetFloat("velocity", tempVelocity);
         PlayerAnim.SetBool("JumpAnim", !isGround);
-
+        //if((playerRB.velocity.x == 0 || !isGround )&& audioSource.isPlaying == adim)
+        //{
+        //    audioSource.Stop();
+        //}
        
     }
     private void FixedUpdate()

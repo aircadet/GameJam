@@ -5732,7 +5732,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23521ebbaa97b1740a6e1688e57650fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: 1
 --- !u!4 &1549261126
 Transform:
   m_ObjectHideFlags: 0
@@ -5762,48 +5761,60 @@ PrefabInstance:
     - target: {fileID: 3751748139432650577, guid: d0f5770d6e261fd45ae1c1e2573838e3,
         type: 3}
       propertyPath: storySprites.Array.size
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3751748139432650577, guid: d0f5770d6e261fd45ae1c1e2573838e3,
         type: 3}
       propertyPath: StoryPages.Array.data[0]
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3751748139432650577, guid: d0f5770d6e261fd45ae1c1e2573838e3,
         type: 3}
       propertyPath: storySprites.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: d89889efdab513b41a92287db99f29f4,
+      objectReference: {fileID: 21300000, guid: f4c406dfb93d2fd489a1a92672ec77fb,
         type: 3}
     - target: {fileID: 3751748139432650577, guid: d0f5770d6e261fd45ae1c1e2573838e3,
         type: 3}
       propertyPath: storySprites.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: cc8192b7a033cd2429ddfe424cc34ff9,
+      objectReference: {fileID: 21300000, guid: 8f7bf6db419d97b4eaba360f46062ed5,
         type: 3}
     - target: {fileID: 3751748139432650577, guid: d0f5770d6e261fd45ae1c1e2573838e3,
         type: 3}
       propertyPath: storySprites.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: ca7ea1c208bce7440953733bb9ece0ec,
+      objectReference: {fileID: 21300000, guid: e88dd2c236c18164abc7277fe3242ab5,
         type: 3}
     - target: {fileID: 3751748139432650577, guid: d0f5770d6e261fd45ae1c1e2573838e3,
         type: 3}
       propertyPath: storySprites.Array.data[3]
       value: 
-      objectReference: {fileID: 21300000, guid: 55c7e40f4d01efa4f9d07ba83171007e,
+      objectReference: {fileID: 21300000, guid: 832bb1ab1b10f8e47a7837cbfd717d91,
         type: 3}
     - target: {fileID: 3751748139432650577, guid: d0f5770d6e261fd45ae1c1e2573838e3,
         type: 3}
       propertyPath: storySprites.Array.data[4]
       value: 
-      objectReference: {fileID: 21300000, guid: b3ae956bae5dfbf4aacb50ea3e854fdb,
+      objectReference: {fileID: 21300000, guid: 4b539b31f5fbba944ba9558e77c1ab49,
         type: 3}
     - target: {fileID: 3751748139432650577, guid: d0f5770d6e261fd45ae1c1e2573838e3,
         type: 3}
       propertyPath: storySprites.Array.data[5]
       value: 
-      objectReference: {fileID: 21300000, guid: dba05d9ef6e7a8242949c5939da3bf95,
+      objectReference: {fileID: 21300000, guid: d438c22e6d7b50d4b9f91c0d79d07e8c,
+        type: 3}
+    - target: {fileID: 3751748139432650577, guid: d0f5770d6e261fd45ae1c1e2573838e3,
+        type: 3}
+      propertyPath: storySprites.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 16fd3a54504c13240982898c2375876f,
+        type: 3}
+    - target: {fileID: 3751748139432650577, guid: d0f5770d6e261fd45ae1c1e2573838e3,
+        type: 3}
+      propertyPath: storySprites.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5c52638d46362c5459c67e3cd05ed796,
         type: 3}
     - target: {fileID: 7463859638900140842, guid: d0f5770d6e261fd45ae1c1e2573838e3,
         type: 3}
@@ -5813,7 +5824,7 @@ PrefabInstance:
     - target: {fileID: 7463859638900140842, guid: d0f5770d6e261fd45ae1c1e2573838e3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8810076788817165001, guid: d0f5770d6e261fd45ae1c1e2573838e3,
         type: 3}
@@ -6048,7 +6059,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1813659495}
   m_LocalRotation: {x: 0.0007158157, y: -0, z: -0, w: 0.99999976}
-  m_LocalPosition: {x: 6.7, y: -3.16, z: 8.5}
+  m_LocalPosition: {x: 7.22, y: -3.49, z: 8.5}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 519420032}
