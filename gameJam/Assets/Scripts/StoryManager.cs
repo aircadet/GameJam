@@ -8,9 +8,9 @@ public class StoryManager : MonoBehaviour
     public GameObject storyPanel;
     public Image storyImageBox;
     public int[] StoryPages; // Eğer 1 bölümde 2 geçiş veya fazlası varsa, bitiş spriteları
-    public int storyCounter=0;
-    public int currentPage= -1;
-    bool isStoryOpen=false;
+    public int storyCounter = 0;
+    public int currentPage = -1;
+    bool isStoryOpen = false;
     private void Update()
     {
         //if (Input.GetMouseButtonDown(0) && storyPanel.activeSelf)
@@ -20,28 +20,29 @@ public class StoryManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
-       
-        if(storyPanel.activeSelf && !isStoryOpen) // Story her aktif olduğunda 1 defa çalışacak
+
+        if (storyPanel.activeSelf && !isStoryOpen) // Story her aktif olduğunda 1 defa çalışacak
         {
-            storyImageBox.sprite = storySprites[currentPage+1];
+            storyImageBox.sprite = storySprites[currentPage + 1];
             currentPage++;
             isStoryOpen = true;
             print("control");
         }
-        if(!storyPanel.activeSelf)
+        if (!storyPanel.activeSelf)
         {
             isStoryOpen = false;
         }
     }
     public void NextImage()
-    {   if(currentPage+1 == StoryPages[storyCounter])
+    {
+        if (currentPage + 1 == StoryPages[storyCounter])
         {
             print(storyCounter);
             storyCounter++;
             // Hikaye bitimi eventler buraya yazılacak
             storyPanel.SetActive(false);
         }
-        else if(storySprites[currentPage+1] != null)
+        else if (storySprites[currentPage + 1] != null)
         {
             storyImageBox.sprite = storySprites[currentPage + 1];
             currentPage++;

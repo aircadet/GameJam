@@ -11,9 +11,9 @@ public class PlayerMovement : MonoBehaviour
     public float speed, acceleration;
     public bool isGround = true;
     public bool swordUpgrade = false;
-    public bool knifeUpgrade=false;
-    float coolDown= 1f;
-    float nextJumpTime=0;
+    public bool knifeUpgrade = false;
+    float coolDown = 1f;
+    float nextJumpTime = 0;
     float nextAttackTime = 0;
 
     public AudioSource audioSource;
@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         //{
         //    audioSource.Stop();
         //}
-       
+
     }
     private void FixedUpdate()
     {
@@ -69,8 +69,8 @@ public class PlayerMovement : MonoBehaviour
             nextJumpTime = Time.timeSinceLevelLoad + coolDown;
         }
         if (Input.GetKey(KeyCode.F) && nextAttackTime <= Time.timeSinceLevelLoad)
-        { 
-            if(swordUpgrade)
+        {
+            if (swordUpgrade)
             {
                 PlayerAnim.SetTrigger("SwordAttack");
                 nextAttackTime = Time.timeSinceLevelLoad + coolDown;
@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void PlaySound(AudioClip clip)
     {
-        
+
         if (!audioSource.isPlaying)
         {
             audioSource.PlayOneShot(clip, 0.5f);
