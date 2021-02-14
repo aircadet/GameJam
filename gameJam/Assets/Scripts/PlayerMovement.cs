@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip[] kiliclar;
     public AudioClip[] swords;
 
-
     void Start()
     {
         PlayerAnim = gameObject.GetComponent<Animator>();
@@ -104,7 +103,31 @@ public class PlayerMovement : MonoBehaviour
         audioSource.PlayOneShot(clip, 0.5f);
 
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Enemy") )
+        {
+            if (Input.GetKey(KeyCode.F) && nextAttackTime <= Time.timeSinceLevelLoad)
+            {
+                if (swordUpgrade)
+                {
+                    PlayerAnim.SetTrigger("SwordAttack");
+                    nextAttackTime = Time.timeSinceLevelLoad + coolDown;
+                    //SoundManager.PlaySound("sword");
+                    //collision.GetComponent<EnemyAttackScript>.GetDamage();
+                    PlaySound2(kilic3);
+                }
+                else if (knifeUpgrade)
+                {
+                    PlayerAnim.SetTrigger("KnifeAttack");
+                    nextAttackTime = Time.timeSinceLevelLoad + coolDown;
+                  //  collision.GetComponent<EnemyAttackScript>.GetDamage();
+                    PlaySound2(sword);
+                }
+            }
 
+        }
+    }
 
 
 
