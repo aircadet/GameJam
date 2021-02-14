@@ -102,12 +102,12 @@ TextureImporter:
       name: Death_0
       rect:
         serializedVersion: 2
-        x: 66
-        y: 59
-        width: 28
-        height: 35
+        x: 59
+        y: 48
+        width: 46
+        height: 57
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -123,12 +123,12 @@ TextureImporter:
       name: Death_6
       rect:
         serializedVersion: 2
-        x: 213
-        y: 51
-        width: 35
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 201
+        y: 50
+        width: 58
+        height: 43
+      alignment: 9
+      pivot: {x: 0.53018427, y: 0.6547131}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -144,12 +144,12 @@ TextureImporter:
       name: Death_11
       rect:
         serializedVersion: 2
-        x: 354
-        y: 49
-        width: 54
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 350
+        y: 46
+        width: 68
+        height: 27
+      alignment: 9
+      pivot: {x: 0.50247777, y: 1.1247596}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,12 +165,12 @@ TextureImporter:
       name: Death_12
       rect:
         serializedVersion: 2
-        x: 502
-        y: 49
-        width: 56
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 501
+        y: 44
+        width: 67
+        height: 24
+      alignment: 9
+      pivot: {x: 0.50522536, y: 1.2586365}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
