@@ -7,16 +7,16 @@ public class EnemyAttackScript : MonoBehaviour
     public GameObject player;
     public GameObject enemy;
     public bool walk;
-
+    public Animator enemyAnim;
     public float enemySpeed;
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
+        enemyAnim.SetBool("walk", walk);
         Vector2 playerPos = player.transform.position;
         Vector2 enemyPos = enemy.transform.position;
 
@@ -60,9 +60,13 @@ public class EnemyAttackScript : MonoBehaviour
 
         if (Mathf.Abs(enemyPos.x - playerPos.x) < 3) 
         {
-          
+
             //attack
-          
+            enemyAnim.SetBool("attack", true);
+        }
+        else
+        {
+            enemyAnim.SetBool("attack", false);
         }
 
         Debug.Log("Yürüme Durumu ---->" + walk);

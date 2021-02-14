@@ -3603,6 +3603,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ffff64f1e8828442a548802337dbc06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 53331844}
+  enemy: {fileID: 1066560603}
+  walk: 0
+  enemyAnim: {fileID: 1066560606}
+  enemySpeed: 2
 --- !u!4 &948218408
 Transform:
   m_ObjectHideFlags: 0
@@ -3699,6 +3704,18 @@ Transform:
   m_Father: {fileID: 431123754}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1066560603 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8874556507324484250, guid: 5df8265f275da2e4db784a0a56c58b41,
+    type: 3}
+  m_PrefabInstance: {fileID: 8874556508389082928}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1066560606 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8874556507324484253, guid: 5df8265f275da2e4db784a0a56c58b41,
+    type: 3}
+  m_PrefabInstance: {fileID: 8874556508389082928}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1080487266
 GameObject:
   m_ObjectHideFlags: 0
